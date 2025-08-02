@@ -30,3 +30,9 @@ A simple React-based web application that allows users to browse doctors, view a
    ```bash
    git clone https://github.com/your-username/healthcare-appointment-interface.git
    cd healthcare-appointment-interface
+2.Install dependencies:
+    ```bash
+     npm install
+3. Run the app:
+    ```bash
+     npm start
