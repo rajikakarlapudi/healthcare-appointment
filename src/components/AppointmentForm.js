@@ -10,22 +10,25 @@ function AppointmentForm({ doctorId }) {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
-  const doctor = doctors.find(d => d.id === doctorId);
+  const doctor = doctors.find((d) => d.id === doctorId);
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Check if selected time is within availability
-    const selected = new Date(form.dateTime).toISOString().slice(0, 16); // match format
-    const availableTimes = doctor.availability.map(time => time.slice(0, 16)); // trim seconds
+    const selected = form.dateTime; // e.g., "2025-08-03T10:00"
+    const availableTimes = doctor.availability.map((time) =>
+      time.slice(0, 16) // Convert to "YYYY-MM-DDTHH:MM"
+    );
 
     if (!availableTimes.includes(selected)) {
       setError("Doctor is not available at the selected time.");
       return;
     }
 
-    console.log({ ...form, doctorId });
+    // Clear error and mark submission
+    setError("");
     setSubmitted(true);
+    console.log("Appointment booked:", { ...form, doctorId });
   };
 
   if (submitted)
@@ -38,20 +41,20 @@ function AppointmentForm({ doctorId }) {
         type="text"
         placeholder="Patient Name"
         required
-        onChange={e => setForm({ ...form, patientName: e.target.value })}
+        onChange={(e) => setForm({ ...form, patientName: e.target.value })}
       />
       <input
         type="email"
         placeholder="Email"
         required
-        onChange={e => setForm({ ...form, email: e.target.value })}
+        onChange={(e) => setForm({ ...form, email: e.target.value })}
       />
       <input
         type="datetime-local"
         required
-        onChange={e => {
+        onChange={(e) => {
           setForm({ ...form, dateTime: e.target.value });
-          setError(""); // clear on change
+          setError("");
         }}
       />
       {error && <p style={{ color: "red" }}>{error}</p>}
