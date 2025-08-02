@@ -36,3 +36,27 @@ A simple React-based web application that allows users to browse doctors, view a
 3. Run the app:
     ```bash
      npm start
+🚧 Improvements With More Time:
+🗂 Backend integration using Node.js and Express.
+
+🔐 User authentication (login/signup for patients and doctors).
+
+📅 Real-time availability calendar or time slot picker.
+
+📊 Admin dashboard for managing appointments.
+
+📩 Email confirmation for appointments.
+
+😅 Challenges Faced & Solutions:
+1. Booking Validation
+Challenge: Preventing users from booking appointments outside of available times.
+Solution: Normalized datetime format and checked availability before confirming the booking.
+
+2. No Search Results
+Challenge: Handling empty state elegantly when search filters return no doctors.
+Solution: Added a fallback image and a friendly message to inform users.
+
+3. Icon vs. Image Profiles
+Challenge: Not all doctors had real images.
+Solution: Switched to using React Icons (FaUserMd) to visually represent doctors without the need for images.
+
